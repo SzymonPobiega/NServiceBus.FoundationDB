@@ -64,9 +64,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\NServiceBus.AddIn\NServiceBus.AddIn.csproj">
+    <ProjectReference Include="..\NServiceBus.FoundationDB\NServiceBus.FoundationDB.csproj">
       <Project>{ba731749-22c7-4025-8a4d-465ae8e02e61}</Project>
-      <Name>NServiceBus.AddIn</Name>
+      <Name>NServiceBus.FoundationDB</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
