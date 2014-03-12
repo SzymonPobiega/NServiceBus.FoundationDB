@@ -1,7 +1,6 @@
 ﻿using System.Configuration;
-using System.IO;
 
-namespace NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister
+namespace NServiceBus.FoundationDB.Config
 {
     public static class FDBConfigurator
     {

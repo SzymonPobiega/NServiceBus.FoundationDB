@@ -78,6 +78,7 @@
     <Compile Include="ISerializer.cs" />
     <Compile Include="JsonSerializer.cs" />
     <Compile Include="Persistence\FoundationDB\SagaPersister\SagaMetadata.cs" />
+    <Compile Include="Persistence\FoundationDB\TimeoutPersister\ConfigureFDBTimeoutPersister.cs" />
     <Compile Include="Persistence\FoundationDB\TimeoutPersister\FDBTimeoutPersister.cs" />
     <Compile Include="Persistence\FoundationDB\TimeoutPersister\IClock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

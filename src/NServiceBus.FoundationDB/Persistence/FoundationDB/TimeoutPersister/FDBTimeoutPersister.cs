@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using FoundationDB.Client;
 using FoundationDB.Layers.Tuples;
+using NServiceBus.FoundationDB.Config;
 using NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister;
 using NServiceBus.Timeout.Core;
 

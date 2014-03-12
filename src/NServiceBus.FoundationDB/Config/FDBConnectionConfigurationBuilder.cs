@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister
+namespace NServiceBus.FoundationDB.Config
 {
     public class FDBConnectionConfigurationBuilder
     {
