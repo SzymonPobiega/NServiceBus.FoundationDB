@@ -86,6 +86,17 @@ namespace NServiceBus.AddIn.Tests
         }
 
         [Test]
+        public void Throws_exception_when_adding_timeout_with_same_id()
+        {
+            var baseTime = new DateTime(1984, 04, 09, 10, 0, 0);
+
+            timeoutPersister.Add(CreateTimeout("1", baseTime.AddMinutes(5)));
+
+            Assert.Throws<InvalidOperationException>(
+                () => timeoutPersister.Add(CreateTimeout("1", baseTime.AddMinutes(15))));
+        }
+
+        [Test]
         public void Can_find_timeout_by_id()
         {
             var baseTime = new DateTime(1984, 04, 09, 10, 0, 0);

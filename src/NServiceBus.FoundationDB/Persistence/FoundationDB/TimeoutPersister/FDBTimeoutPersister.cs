@@ -26,7 +26,7 @@ namespace NServiceBus.FoundationDB.Persistence.FoundationDB.TimeoutPersister
             var now = clock.Now();
             using (var tx = db.BeginReadOnlyTransaction())
             {
-                var range = tx.Snapshot.GetRange(GetByTimeKey(startSlice, ""), GetByTimeKey(now, "")).ToListAsync().Result;
+                var range = tx.Snapshot.GetRange(GetTimeIndexKey(startSlice, ""), GetTimeIndexKey(now, "")).ToListAsync().Result;
                 var results = range.Select(x => Tuple.Create(x.Value.ToString(), new DateTime((long) db.Unpack(x.Key)[1]))).ToList();
                 nextTimeToRunQuery = results.Any() ? results.Last().Item2 : startSlice;
                 return results;
@@ -37,16 +37,28 @@ namespace NServiceBus.FoundationDB.Persistence.FoundationDB.TimeoutPersister
         {
             using (var tx = db.BeginTransaction())
             {
-                tx.Set(db.Pack(timeout.Id), serializer.Serialize(timeout));
+                var timeoutKey = GetTimeoutKey(timeout);
+
+                var existingTimeout = tx.GetAsync(timeoutKey).Result;
+                if (existingTimeout.HasValue)
+                {
+                    throw new InvalidOperationException("Timeout with this ID already exists.");
+                }
+                tx.Set(timeoutKey, serializer.Serialize(timeout));
                 tx.Set(db.Pack(timeout.Id, "Time"), Slice.FromInt64(timeout.Time.Ticks));
                 tx.Set(db.Pack(timeout.SagaId, timeout.Id), Slice.Empty);
-                var byTimeKey = GetByTimeKey(timeout.Time, timeout.Id);
+                var byTimeKey = GetTimeIndexKey(timeout.Time, timeout.Id);
                 tx.Set(byTimeKey, Slice.FromString(timeout.Id));
                 tx.CommitAsync().Wait();
             }
         }
 
-        private Slice GetByTimeKey(DateTime time, string timeoutId)
+        private Slice GetTimeoutKey(TimeoutData timeout)
+        {
+            return db.Pack(timeout.Id);
+        }
+
+        private Slice GetTimeIndexKey(DateTime time, string timeoutId)
         {
             return db.GlobalSpace.Pack("ByTime", time, timeoutId);
         }
@@ -91,7 +103,7 @@ namespace NServiceBus.FoundationDB.Persistence.FoundationDB.TimeoutPersister
         private void RemoveEntryInTimeIndex(IFdbTransaction tx, string timeoutId)
         {
             var time = tx.GetAsync(db.Pack(timeoutId, "Time")).Result.ToInt64();
-            var byTimeKey = GetByTimeKey(new DateTime(time), timeoutId);
+            var byTimeKey = GetTimeIndexKey(new DateTime(time), timeoutId);
             tx.Clear(byTimeKey);
         }
 
