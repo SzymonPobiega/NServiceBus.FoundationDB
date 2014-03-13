@@ -1,5 +1,7 @@
 ﻿using System;
 using FoundationDB.Client;
+using NServiceBus.FoundationDB;
+using NServiceBus.FoundationDB.Config;
 using NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister;
 using NServiceBus.FoundationDB.Persistence.FoundationDB.TimeoutPersister;
 using NServiceBus.Timeout.Core;

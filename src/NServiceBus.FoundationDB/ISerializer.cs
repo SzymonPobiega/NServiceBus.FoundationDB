@@ -1,7 +1,7 @@
 ﻿using System;
 using FoundationDB.Client;
 
-namespace NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister
+namespace NServiceBus.FoundationDB
 {
     public interface ISerializer
     {

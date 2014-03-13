@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using FoundationDB.Client;
+using NServiceBus.FoundationDB.Config;
 using NServiceBus.Saga;
 using Newtonsoft.Json;
 

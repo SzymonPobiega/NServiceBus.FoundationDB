@@ -2,7 +2,7 @@
 using FoundationDB.Client;
 using Newtonsoft.Json;
 
-namespace NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister
+namespace NServiceBus.FoundationDB
 {
     public class JsonSerializer : ISerializer
     {

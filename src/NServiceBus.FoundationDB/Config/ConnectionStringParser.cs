@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister
+namespace NServiceBus.FoundationDB.Config
 {
     public class ConnectionStringParser
     {
