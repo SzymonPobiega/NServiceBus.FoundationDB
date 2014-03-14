@@ -1,14 +1,11 @@
 ﻿using System;
-using System.Threading.Tasks;
 using FoundationDB.Client;
-using FoundationDB.Layers.Directories;
-using NServiceBus.FoundationDB;
 using NServiceBus.FoundationDB.Config;
 using NServiceBus.FoundationDB.Persistence.FoundationDB.SagaPersister;
 using NUnit.Framework;
 using FluentAssertions;
 
-namespace NServiceBus.AddIn.Tests
+namespace NServiceBus.FoundationDB.Tests
 {
     [TestFixture]
     public class SagaPersisterTests

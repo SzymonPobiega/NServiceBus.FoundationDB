@@ -1,7 +1,7 @@
 ﻿using System;
 using NServiceBus.FoundationDB.Persistence.FoundationDB.TimeoutPersister;
 
-namespace NServiceBus.AddIn.Tests
+namespace NServiceBus.FoundationDB.Tests
 {
     public class FakeClock : IClock
     {
