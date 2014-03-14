@@ -7,8 +7,8 @@
     <ProjectGuid>{8B773CFD-E0F8-402F-AABC-04580289C76A}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NServiceBus.AddIn.Tests</RootNamespace>
-    <AssemblyName>NServiceBus.AddIn.Tests</AssemblyName>
+    <RootNamespace>NServiceBus.FoundationDB.Tests</RootNamespace>
+    <AssemblyName>NServiceBus.FoundationDB.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <RestorePackages>true</RestorePackages>

@@ -1,7 +1,7 @@
 ﻿using System;
 using NServiceBus.Saga;
 
-namespace NServiceBus.AddIn.Tests
+namespace NServiceBus.FoundationDB.Tests
 {
     public class TestSaga : IContainSagaData
     {
